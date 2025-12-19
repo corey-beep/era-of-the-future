@@ -165,6 +165,16 @@ function App() {
         transform: `perspective(1000px) rotateX(${Math.min(scrollY * 0.02, 10)}deg) translateZ(${Math.min(scrollY * -0.2, -50)}px)`,
         opacity: Math.max(0.3, 1 - (scrollY / 1200))
       }}>
+        {/* Distorted Images */}
+        <div className="hero-images">
+          <div className="hero-image-wrapper left">
+            <img src="/sun god.png" alt="Sun God" className="hero-img" />
+          </div>
+          <div className="hero-image-wrapper right">
+            <img src="/egyptian graffiti.png" alt="Egyptian Graffiti" className="hero-img" />
+          </div>
+        </div>
+
         <h1 className="chrome-title" data-text="ERA OF THE FUTURE">
           ERA OF THE FUTURE
         </h1>
