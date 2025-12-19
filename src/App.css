@@ -288,7 +288,7 @@ html {
   position: relative;
   width: 100%;
   max-width: 1400px;
-  margin: 0 auto 60px;
+  margin: 60px auto 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
