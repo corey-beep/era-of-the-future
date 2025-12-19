@@ -11,6 +11,17 @@ function App() {
   const [audioPlaying, setAudioPlaying] = useState(false)
   const [volume, setVolume] = useState(70)
   const audioRef = useRef(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile devices
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -130,7 +141,7 @@ function App() {
         transform: `scale(${1 + scrollY * 0.0003})`,
         filter: `blur(${Math.min(scrollY * 0.002, 2)}px)`
       }}>
-        {[...Array(100)].map((_, i) => (
+        {[...Array(isMobile ? 40 : 100)].map((_, i) => (
           <div key={i} className="star" style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -144,7 +155,7 @@ function App() {
 
       {/* Rain effect */}
       <div className="rain">
-        {[...Array(150)].map((_, i) => (
+        {[...Array(isMobile ? 50 : 150)].map((_, i) => (
           <div key={i} className="rain-drop" style={{
             left: `${Math.random() * 100}%`,
             animationDelay: `${Math.random() * 3}s`,
@@ -179,10 +190,10 @@ function App() {
         {/* Distorted Images */}
         <div className="hero-images">
           <div className="hero-image-wrapper left">
-            <img src="/sun god.png" alt="Sun God" className="hero-img" />
+            <img src="/sun god.png" alt="Sun God" className="hero-img" loading="eager" />
           </div>
           <div className="hero-image-wrapper right">
-            <img src="/egyptian graffiti.png" alt="Egyptian Graffiti" className="hero-img" />
+            <img src="/egyptian graffiti.png" alt="Egyptian Graffiti" className="hero-img" loading="eager" />
           </div>
         </div>
       </section>
@@ -320,6 +331,7 @@ function App() {
                 allowFullScreen=""
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
+                title="Spotify Player"
               ></iframe>
             </div>
           </div>
