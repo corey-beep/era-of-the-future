@@ -229,6 +229,30 @@ function App() {
         </div>
       </section>
 
+      {/* Vinyl Album Section */}
+      <section className="vinyl-section scroll-section" style={{
+        transform: `perspective(1000px) translateY(${Math.max(-15, Math.min(15, (scrollY - 800) * -0.01))}px) rotateX(${Math.max(-2, Math.min(2, (scrollY - 800) * 0.002))}deg)`,
+        opacity: Math.min(1, Math.max(0.8, (scrollY - 200) / 400))
+      }}>
+        <h2 className="section-title">// GET_THE_VINYL_</h2>
+        <div className="vinyl-album-container">
+          <a
+            href="https://neweranell.bandcamp.com/album/90s-mentality"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="vinyl-album-link"
+          >
+            <div className="vinyl-album-wrapper">
+              <img src="/90s vinyl.jpg" alt="90s Mentality Vinyl" className="vinyl-album-img" loading="eager" />
+              <div className="vinyl-album-overlay">
+                <span className="vinyl-cta">GET 90s MENTALITY VINYL NOW!</span>
+                <span className="vinyl-subcta">CLICK TO BUY ON BANDCAMP</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
       {/* Abstract Button Grid */}
       <section className="button-section scroll-section" style={{
         transform: `perspective(1000px) translateX(${Math.max(-30, Math.min(30, (scrollY - 600) * 0.03))}px) rotateY(${Math.max(-3, Math.min(3, (scrollY - 600) * -0.005))}deg)`,
@@ -366,30 +390,6 @@ function App() {
               ></iframe>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Vinyl Album Section */}
-      <section className="vinyl-section scroll-section" style={{
-        transform: `perspective(1000px) translateY(${Math.max(-15, Math.min(15, (scrollY - 2800) * -0.01))}px) rotateX(${Math.max(-2, Math.min(2, (scrollY - 2800) * 0.002))}deg)`,
-        opacity: Math.min(1, Math.max(0.8, (scrollY - 2200) / 400))
-      }}>
-        <h2 className="section-title">// GET_THE_VINYL_</h2>
-        <div className="vinyl-album-container">
-          <a
-            href="https://neweranell.bandcamp.com/album/90s-mentality"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="vinyl-album-link"
-          >
-            <div className="vinyl-album-wrapper">
-              <img src="/90s vinyl.jpg" alt="90s Mentality Vinyl" className="vinyl-album-img" />
-              <div className="vinyl-album-overlay">
-                <span className="vinyl-cta">GET 90s MENTALITY VINYL NOW!</span>
-                <span className="vinyl-subcta">CLICK TO BUY ON BANDCAMP</span>
-              </div>
-            </div>
-          </a>
         </div>
       </section>
 
