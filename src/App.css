@@ -1010,13 +1010,34 @@ html {
   margin: 0 auto;
 }
 
+.vinyl-hero-section {
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.vinyl-section-title {
+  font-family: 'Black Ops One', monospace;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 40px;
+  text-align: left;
+  letter-spacing: 0.1em;
+  border-left: 6px solid #ffffff;
+  padding-left: 20px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #000000;
+  transform: skew(-2deg);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .vinyl-album-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  margin-top: 60px;
-  margin-bottom: 40px;
 }
 
 .vinyl-album-link {

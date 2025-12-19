@@ -219,21 +219,24 @@ function App() {
         </div>
 
         {/* Vinyl Album Section */}
-        <div className="vinyl-album-container">
-          <a
-            href="https://neweranell.bandcamp.com/album/90s-mentality"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="vinyl-album-link"
-          >
-            <div className="vinyl-album-wrapper">
-              <img src="/90s vinyl.jpg" alt="90s Mentality Vinyl" className="vinyl-album-img" loading="eager" />
-              <div className="vinyl-album-overlay">
-                <span className="vinyl-cta">GET 90s MENTALITY VINYL NOW!</span>
-                <span className="vinyl-subcta">CLICK TO BUY ON BANDCAMP</span>
+        <div className="vinyl-hero-section">
+          <h2 className="vinyl-section-title">// GET_VINYL_</h2>
+          <div className="vinyl-album-container">
+            <a
+              href="https://neweranell.bandcamp.com/album/90s-mentality"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="vinyl-album-link"
+            >
+              <div className="vinyl-album-wrapper">
+                <img src="/90s vinyl.jpg" alt="90s Mentality Vinyl" className="vinyl-album-img" loading="eager" />
+                <div className="vinyl-album-overlay">
+                  <span className="vinyl-cta">GET 90s MENTALITY VINYL NOW!</span>
+                  <span className="vinyl-subcta">CLICK TO BUY ON BANDCAMP</span>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
 
         {/* Distorted Images */}
