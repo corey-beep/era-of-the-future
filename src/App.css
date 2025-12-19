@@ -1,0 +1,1152 @@
+/* ============================================
+   90'S GRUNGE × Y2K CHROME × HIP-HOP
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --chrome-light: #f0f0f0;
+  --chrome-mid: #c0c0c0;
+  --chrome-dark: #606060;
+  --black: #000000;
+  --white: #ffffff;
+  --accent: #ff00ff;
+}
+
+body {
+  background: #000000;
+  color: var(--chrome-light);
+  font-family: 'Black Ops One', 'Courier New', monospace;
+  overflow-x: hidden;
+  cursor: crosshair;
+  perspective: 1000px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  background: #000000;
+}
+
+.app-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/newBGnewera.png');
+  background-size: 60%;
+  background-position: center top;
+  background-repeat: repeat-y;
+  background-attachment: scroll;
+  opacity: 0.90;
+  z-index: 0;
+  filter: contrast(1.3) brightness(0.8) grayscale(0.3);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: background-scroll 60s linear infinite;
+}
+
+@keyframes background-scroll {
+  0% {
+    background-position: center 0px;
+  }
+  100% {
+    background-position: center 2000px;
+  }
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+.scroll-section {
+  will-change: transform, opacity;
+  transition: transform 0.1s ease-out, opacity 0.3s ease-out;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* ============================================
+   RAIN & LIGHTNING EFFECTS
+   ============================================ */
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8);
+  animation: twinkle linear infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+    filter: brightness(1.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+    filter: brightness(2);
+  }
+}
+
+.rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9997;
+  overflow: hidden;
+}
+
+.rain-drop {
+  position: absolute;
+  top: -10%;
+  width: 4px;
+  height: 100px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(150, 150, 150, 1),
+    rgba(100, 100, 100, 0.8)
+  );
+  animation: rain-fall linear infinite;
+  opacity: 1;
+  box-shadow: 0 0 3px rgba(150, 150, 150, 0.8);
+  filter: blur(0.5px);
+}
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+.lightning-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(200, 220, 255, 0.4) 20%,
+    transparent 50%
+  );
+  z-index: 9996;
+  pointer-events: none;
+  animation: lightning-flash 0.2s ease-out;
+}
+
+@keyframes lightning-flash {
+  0%, 100% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.lightning-flash {
+  animation: screen-flash 0.2s ease-out;
+}
+
+@keyframes screen-flash {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.3);
+  }
+}
+
+/* ============================================
+   GRUNGE TEXTURES & OVERLAYS
+   ============================================ */
+
+.app-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.grunge-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 1px,
+      rgba(255, 255, 255, 0.02) 1px,
+      rgba(255, 255, 255, 0.02) 2px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 1px,
+      rgba(255, 255, 255, 0.02) 1px,
+      rgba(255, 255, 255, 0.02) 2px
+    ),
+    radial-gradient(
+      circle at 20% 50%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    ),
+    radial-gradient(
+      circle at 80% 50%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: overlay;
+  opacity: 0.8;
+}
+
+.scan-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9998;
+  animation: scanline-move 8s linear infinite;
+}
+
+@keyframes scanline-move {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(10px); }
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+  padding: 120px 20px 80px;
+  text-align: center;
+  position: relative;
+}
+
+.chrome-title {
+  font-family: 'Black Ops One', cursive;
+  font-size: clamp(3rem, 12vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  position: relative;
+  text-shadow:
+    3px 3px 0px #000000,
+    -1px -1px 0px #666666,
+    2px 2px 10px rgba(255, 255, 255, 0.5);
+  filter:
+    drop-shadow(0 0 30px rgba(255, 255, 255, 0.3))
+    contrast(1.2);
+  line-height: 1.1;
+  transform: skew(-2deg);
+}
+
+.chrome-title::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 100%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.1);
+  z-index: -1;
+  text-shadow: none;
+  filter: blur(2px);
+}
+
+.subtitle-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+}
+
+.glitch-text {
+  font-family: 'Rubik Distressed', cursive;
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  text-shadow: 2px 2px 0px #000000;
+  animation: glitch-subtle 5s infinite;
+  transform: skew(-3deg);
+}
+
+@keyframes glitch-subtle {
+  0%, 90%, 100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  92% {
+    transform: translate(-2px, 1px);
+    opacity: 0.8;
+  }
+  94% {
+    transform: translate(2px, -1px);
+    opacity: 0.9;
+  }
+  96% {
+    transform: translate(-1px, 2px);
+    opacity: 0.85;
+  }
+}
+
+.chrome-divider {
+  font-size: 1.5em;
+  color: var(--chrome-mid);
+  font-weight: 300;
+}
+
+/* ============================================
+   ABSTRACT BUTTONS SECTION
+   ============================================ */
+
+.button-section {
+  padding: 80px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Black Ops One', monospace;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 60px;
+  text-align: left;
+  letter-spacing: 0.1em;
+  border-left: 6px solid #ffffff;
+  padding-left: 20px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #000000;
+  transform: skew(-2deg);
+}
+
+.abstract-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 20px;
+}
+
+/* Abstract Button Base Styles */
+.abstract-btn {
+  font-family: 'Black Ops One', cursive;
+  position: relative;
+  padding: 40px 30px;
+  background: #000000;
+  border: 3px solid #ffffff;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  box-shadow:
+    5px 5px 0px rgba(255, 255, 255, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.abstract-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transition: left 0.5s ease;
+}
+
+.abstract-btn:hover::before {
+  left: 100%;
+}
+
+.abstract-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #000000;
+  box-shadow:
+    8px 8px 0px rgba(0, 0, 0, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px) skew(-2deg);
+  text-shadow: none;
+}
+
+.abstract-btn:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.btn-text {
+  position: relative;
+  z-index: 2;
+  display: block;
+  transition: opacity 0.2s;
+}
+
+.btn-glitch {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 1;
+  color: var(--white);
+  transition: opacity 0.2s;
+}
+
+.abstract-btn:hover .btn-text {
+  opacity: 0;
+}
+
+.abstract-btn:hover .btn-glitch {
+  opacity: 1;
+  animation: glitch-text 0.3s infinite;
+}
+
+@keyframes glitch-text {
+  0%, 100% { transform: translate(-50%, -50%); }
+  25% { transform: translate(-48%, -52%); }
+  50% { transform: translate(-52%, -48%); }
+  75% { transform: translate(-49%, -51%); }
+}
+
+/* Unique shapes using clip-path */
+.shape-1 {
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
+
+.shape-2 {
+  clip-path: polygon(0% 15%, 100% 0%, 100% 85%, 0% 100%);
+}
+
+.shape-3 {
+  clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+}
+
+.shape-4 {
+  clip-path: polygon(5% 0%, 100% 5%, 95% 100%, 0% 95%);
+}
+
+.shape-5 {
+  clip-path: polygon(0% 0%, 100% 10%, 100% 100%, 0% 90%);
+}
+
+.shape-6 {
+  clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+}
+
+/* Effect Display */
+.effect-display {
+  margin-top: 40px;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid var(--chrome-mid);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+}
+
+.effect-label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--white);
+  animation: pulse-glow 1s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    opacity: 0.7;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* ============================================
+   PORTFOLIO SECTION
+   ============================================ */
+
+.portfolio {
+  padding: 80px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  padding: 20px;
+}
+
+.portfolio-item {
+  position: relative;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.item-chrome-border {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  background: #ffffff;
+  clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+  transition: all 0.3s ease;
+  box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.3);
+}
+
+.portfolio-item:hover .item-chrome-border {
+  background: #ffffff;
+  box-shadow: 10px 10px 0px rgba(255, 255, 255, 0.5);
+}
+
+.item-content {
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+}
+
+.item-content h3 {
+  font-family: 'Black Ops One', cursive;
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.item-content p {
+  font-family: 'Rubik Distressed', cursive;
+  font-size: 0.9rem;
+  color: #cccccc;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   MEDIA PLAYER SKIN
+   ============================================ */
+
+.media-player-skin {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  border: 4px solid #ffffff;
+  box-shadow:
+    8px 8px 0px rgba(255, 255, 255, 0.2),
+    inset 0 0 30px rgba(0, 0, 0, 0.8);
+  padding: 0;
+  clip-path: polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%);
+}
+
+.player-header {
+  background: linear-gradient(90deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-bottom: 3px solid #ffffff;
+  padding: 15px 20px;
+}
+
+.player-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Black Ops One', monospace;
+  font-size: 0.9rem;
+  color: #00ff00;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  letter-spacing: 0.1em;
+}
+
+.player-title {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.player-time {
+  color: #00ff00;
+  font-size: 0.8rem;
+}
+
+.player-controls-panel {
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  border-top: 3px solid #ffffff;
+  padding: 20px;
+}
+
+.control-buttons-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.player-btn {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 3px solid #ffffff;
+  color: #ffffff;
+  font-size: 1.5rem;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+  box-shadow: 3px 3px 0px rgba(255, 255, 255, 0.3);
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.player-btn:active {
+  transform: translateY(0px);
+  box-shadow: 2px 2px 0px rgba(255, 255, 255, 0.3);
+}
+
+.player-btn.active {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.5);
+}
+
+.player-note {
+  margin-top: 15px;
+  text-align: center;
+  font-family: 'Black Ops One', monospace;
+  font-size: 0.75rem;
+  color: #00ff00;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #ffffff;
+}
+
+.vol-label,
+.vol-value {
+  font-family: 'Black Ops One', monospace;
+  color: #ffffff;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  min-width: 50px;
+  text-align: center;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 8px;
+  background: linear-gradient(90deg, #0a0a0a 0%, #2a2a2a 100%);
+  border: 2px solid #ffffff;
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  cursor: pointer;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   VIDEO SECTION
+   ============================================ */
+
+.video-section {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.video-container {
+  background: #000000;
+  border: 3px solid #ffffff;
+  padding: 20px;
+  margin: 0;
+}
+
+.youtube-embed {
+  width: 100%;
+  border: 3px solid #ffffff;
+  background: #000000;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.youtube-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none !important;
+}
+
+/* ============================================
+   MUSIC SECTION
+   ============================================ */
+
+.music-section {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.audio-visualizer-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  border-bottom: 3px solid #ffffff;
+  gap: 30px;
+}
+
+.eq-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 120px;
+  flex: 1;
+  justify-content: center;
+}
+
+.eq-bar {
+  width: 12px;
+  background: linear-gradient(to top, #00ff00 0%, #ffffff 100%);
+  border: 2px solid #ffffff;
+  animation: eq-bounce 0.6s ease-in-out infinite alternate;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+@keyframes eq-bounce {
+  0% {
+    height: 30%;
+    opacity: 0.7;
+  }
+  100% {
+    height: var(--bar-height, 80%);
+    opacity: 1;
+  }
+}
+
+.spotify-container {
+  background: transparent;
+  border: none;
+  padding: 20px;
+  position: relative;
+}
+
+.vinyl-disc-small {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 30px;
+  background:
+    radial-gradient(circle at center, #000000 30%, #ffffff 31%, #000000 32%),
+    repeating-conic-gradient(from 0deg, #1a1a1a 0deg 2deg, #000000 2deg 4deg);
+  border-radius: 50%;
+  position: relative;
+  border: 3px solid #ffffff;
+  transition: transform 0.5s ease;
+}
+
+.vinyl-disc-small.spinning {
+  animation: vinyl-spin 4s linear infinite;
+}
+
+@keyframes vinyl-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.vinyl-label-small {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000000;
+}
+
+.vinyl-label-small span {
+  font-family: 'Black Ops One', cursive;
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0.1em;
+}
+
+.spotify-embed {
+  width: 100%;
+  border: 3px solid #ffffff;
+  background: #000000;
+}
+
+.spotify-embed iframe {
+  display: block;
+  border: none !important;
+}
+
+
+/* ============================================
+   INSTAGRAM FEED
+   ============================================ */
+
+.instagram-section {
+  padding: 80px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #000000;
+  border: 4px solid #ffffff;
+  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.2);
+}
+
+/* Custom scrollbar for Instagram grid */
+.instagram-grid::-webkit-scrollbar {
+  width: 10px;
+}
+
+.instagram-grid::-webkit-scrollbar-track {
+  background: #000000;
+  border-left: 2px solid #ffffff;
+}
+
+.instagram-grid::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border: 2px solid #000000;
+}
+
+.instagram-grid::-webkit-scrollbar-thumb:hover {
+  background: #cccccc;
+}
+
+.ig-embed-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  background: #000000;
+  border: 3px solid #ffffff;
+  overflow: hidden;
+  clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+  transition: all 0.3s ease;
+}
+
+.ig-embed-wrapper:hover {
+  transform: scale(1.02) rotate(-1deg);
+  box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.5);
+  z-index: 10;
+}
+
+.ig-embed-wrapper iframe {
+  width: 100%;
+  min-height: 500px;
+  border: none;
+  background: #ffffff;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  padding: 60px 20px 40px;
+  text-align: center;
+  border-top: 1px solid var(--chrome-dark);
+  margin-top: 80px;
+}
+
+.footer-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.chrome-text {
+  color: var(--chrome-mid);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.grunge-divider {
+  color: var(--chrome-dark);
+  font-size: 1.5em;
+}
+
+/* ============================================
+   GLITCH EFFECT
+   ============================================ */
+
+.glitch-active {
+  animation: glitch-container 0.3s;
+}
+
+@keyframes glitch-container {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-5px, 5px);
+  }
+  40% {
+    transform: translate(-5px, -5px);
+  }
+  60% {
+    transform: translate(5px, 5px);
+  }
+  80% {
+    transform: translate(5px, -5px);
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 20px 60px;
+  }
+
+  .subtitle-container {
+    font-size: 0.8rem;
+  }
+
+  .abstract-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .spotify-container {
+    padding: 20px;
+  }
+
+  .video-container {
+    padding: 15px;
+  }
+
+  .vinyl-disc-small {
+    width: 100px;
+    height: 100px;
+  }
+
+  .vinyl-label-small {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vinyl-label-small span {
+    font-size: 0.4rem;
+  }
+
+  .instagram-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px;
+    max-height: 600px;
+  }
+
+  .ig-embed-wrapper {
+    min-height: 450px;
+  }
+
+  .ig-embed-wrapper iframe {
+    min-height: 450px;
+  }
+}
+
+@media (max-width: 480px) {
+  .abstract-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .spotify-container {
+    padding: 15px;
+  }
+
+  .video-container {
+    padding: 10px;
+  }
+
+  .instagram-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px;
+    max-height: 500px;
+  }
+
+  .ig-embed-wrapper {
+    min-height: 400px;
+  }
+
+  .ig-embed-wrapper iframe {
+    min-height: 400px;
+  }
+}
+
+/* ============================================
+   SELECTION & CURSOR
+   ============================================ */
+
+::selection {
+  background: var(--chrome-light);
+  color: var(--black);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--chrome-dark);
+  border: 2px solid var(--black);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--chrome-mid);
+}
