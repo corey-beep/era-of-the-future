@@ -202,12 +202,23 @@ function App() {
       <div className="grunge-overlay"></div>
       <div className="scan-lines"></div>
 
-      {/* Vinyl Album Section */}
-      <section className="vinyl-section scroll-section" style={{
-        transform: `perspective(1000px) translateY(${Math.max(-15, Math.min(15, scrollY * -0.01))}px) rotateX(${Math.max(-2, Math.min(2, scrollY * 0.002))}deg)`,
-        opacity: Math.min(1, Math.max(0.3, 1 - (scrollY / 1200)))
+      {/* Hero Section */}
+      <section className="hero scroll-section" style={{
+        transform: `perspective(1000px) rotateX(${Math.min(scrollY * 0.02, 10)}deg) translateZ(${Math.min(scrollY * -0.2, -50)}px)`,
+        opacity: Math.max(0.3, 1 - (scrollY / 1200))
       }}>
-        <h2 className="section-title">// GET_THE_VINYL_</h2>
+        <h1 className="chrome-title" data-text="ERA OF THE FUTURE">
+          ERA OF THE FUTURE
+        </h1>
+        <div className="subtitle-container">
+          <span className="glitch-text">NELL</span>
+          <span className="chrome-divider">×</span>
+          <span className="glitch-text">NEW ERA OF THE FUTURE</span>
+          <span className="chrome-divider">×</span>
+          <span className="glitch-text">LAND OF THE BLACK</span>
+        </div>
+
+        {/* Vinyl Album Section */}
         <div className="vinyl-album-container">
           <a
             href="https://neweranell.bandcamp.com/album/90s-mentality"
@@ -223,23 +234,6 @@ function App() {
               </div>
             </div>
           </a>
-        </div>
-      </section>
-
-      {/* Hero Section */}
-      <section className="hero scroll-section" style={{
-        transform: `perspective(1000px) rotateX(${Math.min(scrollY * 0.02, 10)}deg) translateZ(${Math.min(scrollY * -0.2, -50)}px)`,
-        opacity: Math.max(0.3, 1 - (scrollY / 1200))
-      }}>
-        <h1 className="chrome-title" data-text="ERA OF THE FUTURE">
-          ERA OF THE FUTURE
-        </h1>
-        <div className="subtitle-container">
-          <span className="glitch-text">NELL</span>
-          <span className="chrome-divider">×</span>
-          <span className="glitch-text">NEW ERA OF THE FUTURE</span>
-          <span className="chrome-divider">×</span>
-          <span className="glitch-text">LAND OF THE BLACK</span>
         </div>
 
         {/* Distorted Images */}
