@@ -1001,6 +1001,104 @@ html {
 
 
 /* ============================================
+   VINYL ALBUM SECTION
+   ============================================ */
+
+.vinyl-section {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.vinyl-album-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.vinyl-album-link {
+  text-decoration: none;
+  display: block;
+  max-width: 600px;
+  width: 100%;
+}
+
+.vinyl-album-wrapper {
+  position: relative;
+  width: 100%;
+  border: 4px solid #ffffff;
+  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.2);
+  clip-path: polygon(3% 0%, 100% 0%, 97% 100%, 0% 100%);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vinyl-album-wrapper:hover {
+  transform: scale(1.02) rotate(-1deg);
+  box-shadow: 12px 12px 0px rgba(255, 255, 255, 0.4);
+}
+
+.vinyl-album-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.3s ease;
+  filter: contrast(1.2) brightness(0.95);
+}
+
+.vinyl-album-wrapper:hover .vinyl-album-img {
+  filter: contrast(1.4) brightness(1.1);
+  transform: scale(1.05);
+}
+
+.vinyl-album-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 60%, transparent 100%);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.vinyl-album-wrapper:hover .vinyl-album-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 60%, transparent 100%);
+  padding: 40px 20px;
+}
+
+.vinyl-cta {
+  font-family: 'Black Ops One', cursive;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  color: #ffffff;
+  text-shadow:
+    2px 2px 0px #000000,
+    0 0 20px rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+  text-align: center;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.vinyl-subcta {
+  font-family: 'Black Ops One', monospace;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: #c0c0c0;
+  text-align: center;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+}
+
+.vinyl-album-wrapper:hover .vinyl-subcta {
+  opacity: 1;
+  color: #ffffff;
+}
+
+/* ============================================
    INSTAGRAM FEED
    ============================================ */
 
