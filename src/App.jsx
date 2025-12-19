@@ -386,6 +386,35 @@ function App() {
 
       {/* Footer */}
       <footer className="footer">
+        <div className="social-links">
+          <a
+            href="https://discord.com/channels/1438270637700415570/1438270638509785213"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-link"
+          >
+            <span className="social-icon">💬</span>
+            <span className="social-text">DISCORD</span>
+          </a>
+          <a
+            href="https://www.instagram.com/neweranell?igsh=MWUyeTh5bG4zdTV1Yg=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-link"
+          >
+            <span className="social-icon">📸</span>
+            <span className="social-text">INSTAGRAM</span>
+          </a>
+          <a
+            href="https://x.com/neweranell"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-link"
+          >
+            <span className="social-icon">✖️</span>
+            <span className="social-text">X</span>
+          </a>
+        </div>
         <div className="footer-text">
           <span className="chrome-text">DESIGNED IN THE FUTURE</span>
           <span className="grunge-divider">//</span>

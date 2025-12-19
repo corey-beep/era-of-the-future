@@ -1077,6 +1077,55 @@ html {
   margin-top: 80px;
 }
 
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  font-family: 'Black Ops One', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 30px;
+  background: #000000;
+  border: 3px solid #ffffff;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+  box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.social-link:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.4);
+}
+
+.social-icon {
+  font-size: 2rem;
+  filter: grayscale(1);
+  transition: filter 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+  filter: grayscale(0);
+}
+
+.social-text {
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+}
+
 .footer-text {
   display: flex;
   justify-content: center;
@@ -1513,6 +1562,23 @@ html {
 
   .ig-embed-wrapper iframe {
     min-height: 450px;
+  }
+
+  .social-links {
+    gap: 15px;
+  }
+
+  .social-link {
+    padding: 15px 20px;
+    min-width: 120px;
+  }
+
+  .social-icon {
+    font-size: 1.5rem;
+  }
+
+  .social-text {
+    font-size: 0.75rem;
   }
 }
 
