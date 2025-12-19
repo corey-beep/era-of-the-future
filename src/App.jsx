@@ -238,16 +238,6 @@ function App() {
             </a>
           </div>
         </div>
-
-        {/* Distorted Images */}
-        <div className="hero-images">
-          <div className="hero-image-wrapper left">
-            <img src="/sun god.png" alt="Sun God" className="hero-img" loading="eager" />
-          </div>
-          <div className="hero-image-wrapper right">
-            <img src="/egyptian graffiti.png" alt="Egyptian Graffiti" className="hero-img" loading="eager" />
-          </div>
-        </div>
       </section>
 
       {/* Abstract Button Grid */}
@@ -314,6 +304,20 @@ function App() {
         )}
       </section>
 
+      {/* Hero Images Section */}
+      <section className="hero-images-section scroll-section" style={{
+        transform: `perspective(1000px) translateY(${Math.max(-10, Math.min(10, (scrollY - 1400) * -0.01))}px) rotateX(${Math.max(-2, Math.min(2, (scrollY - 1400) * 0.002))}deg)`,
+        opacity: Math.min(1, Math.max(0.7, (scrollY - 1000) / 400))
+      }}>
+        <div className="hero-images">
+          <div className="hero-image-wrapper left">
+            <img src="/sun god.png" alt="Sun God" className="hero-img" loading="lazy" />
+          </div>
+          <div className="hero-image-wrapper right">
+            <img src="/egyptian graffiti.png" alt="Egyptian Graffiti" className="hero-img" loading="lazy" />
+          </div>
+        </div>
+      </section>
 
       {/* Video Section */}
       <section className="video-section scroll-section" style={{
