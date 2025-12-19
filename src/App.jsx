@@ -12,6 +12,12 @@ function App() {
   const [volume, setVolume] = useState(70)
   const audioRef = useRef(null)
   const [isMobile, setIsMobile] = useState(false)
+  const [currentTrack, setCurrentTrack] = useState(0)
+
+  const playlist = [
+    '/The Gate (feat. Lil Coop).mp3',
+    '/DJ Sound - Chokey Choke (Remastered).mp3'
+  ]
 
   // Detect mobile devices
   useEffect(() => {
@@ -67,6 +73,20 @@ function App() {
     window.addEventListener('message', handleMessage)
     return () => window.removeEventListener('message', handleMessage)
   }, [])
+
+  // Handle track ending - play next track
+  const handleTrackEnded = () => {
+    setCurrentTrack((prev) => (prev + 1) % playlist.length)
+  }
+
+  // Update audio source when track changes
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.load()
+      audioRef.current.volume = 0.25
+      audioRef.current.play().catch(err => console.log('Play failed:', err))
+    }
+  }, [currentTrack])
 
   useEffect(() => {
     // Lightning strikes at random intervals
@@ -132,8 +152,8 @@ function App() {
       onScroll={handleFirstInteraction}
     >
       {/* Background Music */}
-      <audio ref={audioRef} loop>
-        <source src="/The Gate (feat. Lil Coop).mp3" type="audio/mpeg" />
+      <audio ref={audioRef} onEnded={handleTrackEnded}>
+        <source src={playlist[currentTrack]} type="audio/mpeg" />
       </audio>
 
       {/* Stars effect */}
