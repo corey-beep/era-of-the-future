@@ -52,21 +52,32 @@ function App() {
 
     // Listen for YouTube player events
     const handleMessage = (event) => {
-      if (event.origin === 'https://www.youtube.com') {
-        try {
-          const data = JSON.parse(event.data)
-          if (data.event === 'infoDelivery' && data.info && data.info.playerState !== undefined) {
-            // PlayerState: 1 = playing, 2 = paused
-            if (data.info.playerState === 1) {
-              // YouTube is playing, pause background music
-              if (audioRef.current && !audioRef.current.paused) {
-                audioRef.current.pause()
-              }
+      // Accept messages from YouTube
+      if (event.origin !== 'https://www.youtube.com') return
+
+      try {
+        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data
+
+        // Check for player state changes
+        if (data.event === 'infoDelivery' && data.info) {
+          const playerState = data.info.playerState
+
+          if (playerState === 1) {
+            // YouTube is playing (state 1), pause background music
+            if (audioRef.current && !audioRef.current.paused) {
+              console.log('YouTube playing, pausing background music')
+              audioRef.current.pause()
+            }
+          } else if (playerState === 2 || playerState === 0) {
+            // YouTube is paused (state 2) or ended (state 0), resume background music
+            if (audioRef.current && audioRef.current.paused) {
+              console.log('YouTube paused/ended, resuming background music')
+              audioRef.current.play().catch(err => console.log('Resume failed:', err))
             }
           }
-        } catch (e) {
-          // Not JSON or not relevant
         }
+      } catch (e) {
+        // Not JSON or not relevant
       }
     }
 
