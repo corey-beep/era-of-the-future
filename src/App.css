@@ -1120,6 +1120,230 @@ html {
 }
 
 /* ============================================
+   FULL SCREEN EFFECTS
+   ============================================ */
+
+/* DISTORTION EFFECT */
+.effect-distortion {
+  animation: distortion-wave 3s ease-in-out;
+}
+
+@keyframes distortion-wave {
+  0%, 100% {
+    transform: scale(1) skew(0deg);
+    filter: none;
+  }
+  25% {
+    transform: scale(1.05, 0.95) skew(-2deg, 1deg);
+    filter: hue-rotate(30deg);
+  }
+  50% {
+    transform: scale(0.95, 1.05) skew(2deg, -1deg);
+    filter: hue-rotate(-30deg);
+  }
+  75% {
+    transform: scale(1.03, 0.97) skew(-1deg, 2deg);
+    filter: hue-rotate(15deg);
+  }
+}
+
+/* CHROME EFFECT */
+.effect-chrome {
+  animation: chrome-shine 3s ease-in-out;
+}
+
+.effect-chrome::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(192, 192, 192, 0.3) 0%,
+    rgba(255, 255, 255, 0.5) 25%,
+    rgba(128, 128, 128, 0.3) 50%,
+    rgba(255, 255, 255, 0.5) 75%,
+    rgba(192, 192, 192, 0.3) 100%
+  );
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: overlay;
+  animation: chrome-sweep 3s ease-in-out;
+}
+
+@keyframes chrome-shine {
+  0%, 100% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(1.5) contrast(1.3) saturate(0);
+  }
+}
+
+@keyframes chrome-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* NOISE EFFECT */
+.effect-noise::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  animation: noise-flicker 3s ease-in-out;
+}
+
+@keyframes noise-flicker {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 30%, 50%, 70%, 90% {
+    opacity: 0.6;
+  }
+  20%, 40%, 60%, 80% {
+    opacity: 0.3;
+  }
+}
+
+/* GLITCH EFFECT */
+.effect-glitch {
+  animation: glitch-full 3s steps(2, end);
+}
+
+@keyframes glitch-full {
+  0%, 100% {
+    transform: translate(0);
+    filter: none;
+  }
+  10% {
+    transform: translate(-10px, 5px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    transform: translate(10px, -5px);
+    filter: hue-rotate(-90deg);
+  }
+  30% {
+    transform: translate(-5px, 10px);
+    filter: hue-rotate(180deg);
+  }
+  40% {
+    transform: translate(5px, -10px);
+    filter: hue-rotate(-180deg);
+  }
+  50% {
+    transform: translate(-8px, -8px);
+    filter: hue-rotate(45deg) saturate(3);
+  }
+  60% {
+    transform: translate(8px, 8px);
+    filter: hue-rotate(-45deg) saturate(3);
+  }
+  70% {
+    transform: translate(-3px, 3px);
+    filter: invert(1);
+  }
+  80% {
+    transform: translate(3px, -3px);
+    filter: invert(0);
+  }
+}
+
+/* WARP EFFECT */
+.effect-warp {
+  animation: warp-zoom 3s ease-in-out;
+  transform-origin: center center;
+}
+
+@keyframes warp-zoom {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(0.5) rotate(-180deg);
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(0.1) rotate(-360deg);
+    filter: blur(20px);
+    opacity: 0.2;
+  }
+  75% {
+    transform: scale(0.5) rotate(-540deg);
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1) rotate(-720deg);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+/* BREAK EFFECT - Cracked Screen */
+.effect-break::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99999;
+  background:
+    linear-gradient(135deg, transparent 45%, rgba(255, 255, 255, 0.8) 45%, rgba(255, 255, 255, 0.8) 47%, transparent 47%),
+    linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.6) 48%, rgba(255, 255, 255, 0.6) 52%, transparent 52%),
+    linear-gradient(90deg, transparent 49%, rgba(255, 255, 255, 0.5) 49%, rgba(255, 255, 255, 0.5) 51%, transparent 51%),
+    radial-gradient(circle at 50% 50%, transparent 30%, rgba(255, 255, 255, 0.3) 30%, rgba(255, 255, 255, 0.3) 35%, transparent 35%),
+    radial-gradient(circle at 60% 40%, transparent 20%, rgba(255, 255, 255, 0.4) 20%, rgba(255, 255, 255, 0.4) 25%, transparent 25%),
+    radial-gradient(circle at 40% 60%, transparent 25%, rgba(255, 255, 255, 0.3) 25%, rgba(255, 255, 255, 0.3) 30%, transparent 30%);
+  opacity: 0;
+  animation: crack-appear 3s ease-in-out;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes crack-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 

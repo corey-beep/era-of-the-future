@@ -104,7 +104,7 @@ function App() {
   const triggerEffect = (effectName) => {
     setActiveEffect(effectName)
     triggerGlitch()
-    setTimeout(() => setActiveEffect(null), 2000)
+    setTimeout(() => setActiveEffect(null), 3000)
   }
 
   // Handle first user interaction to start audio if autoplay failed
@@ -116,7 +116,7 @@ function App() {
 
   return (
     <div
-      className={`app-container ${glitchActive ? 'glitch-active' : ''} ${lightning ? 'lightning-flash' : ''}`}
+      className={`app-container ${glitchActive ? 'glitch-active' : ''} ${lightning ? 'lightning-flash' : ''} ${activeEffect ? `effect-${activeEffect}` : ''}`}
       onClick={handleFirstInteraction}
       onScroll={handleFirstInteraction}
     >
