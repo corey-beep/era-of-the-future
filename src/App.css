@@ -24,10 +24,103 @@ body {
   overflow-x: hidden;
   cursor: crosshair;
   perspective: 1000px;
+  padding-top: 80px;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ============================================
+   FLOATING NAVIGATION
+   ============================================ */
+
+.floating-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 3px solid #ffffff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  z-index: 10000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.nav-link:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover .nav-icon {
+  transform: scale(1.1);
+}
+
+.nav-btn {
+  font-family: 'Black Ops One', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.nav-text {
+  display: block;
+}
+
+.tour-message-overlay {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10001;
+  animation: slide-down 0.3s ease-out;
+}
+
+.tour-message-popup {
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.95);
+  border: 3px solid #ffffff;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .app-container {
@@ -1651,6 +1744,45 @@ html {
    ============================================ */
 
 @media (max-width: 768px) {
+  body {
+    padding-top: 70px;
+  }
+
+  .floating-nav {
+    padding: 10px 15px;
+    gap: 15px;
+  }
+
+  .nav-link {
+    padding: 8px 12px;
+    min-width: 45px;
+    min-height: 45px;
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-btn {
+    font-size: 0.75rem;
+  }
+
+  .tour-message-overlay {
+    top: 70px;
+    left: 10px;
+    right: 10px;
+    transform: none;
+  }
+
+  .tour-message-popup {
+    padding: 15px 20px;
+  }
+
+  .tour-message-text {
+    font-size: 0.9rem;
+  }
+
   /* Reduce animations on mobile for better performance */
   .hero-image-wrapper.left,
   .hero-image-wrapper.right {
