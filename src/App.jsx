@@ -13,11 +13,17 @@ function App() {
   const audioRef = useRef(null)
   const [isMobile, setIsMobile] = useState(false)
   const [currentTrack, setCurrentTrack] = useState(0)
+  const [showTourMessage, setShowTourMessage] = useState(false)
 
   const playlist = [
     '/The Gate (feat. Lil Coop).mp3',
     '/DJ Sound - Chokey Choke (Remastered).mp3'
   ]
+
+  const handleTourClick = () => {
+    setShowTourMessage(true)
+    setTimeout(() => setShowTourMessage(false), 3000)
+  }
 
   // Detect mobile devices
   useEffect(() => {
@@ -442,6 +448,17 @@ function App() {
 
       {/* Footer */}
       <footer className="footer">
+        <div className="tour-dates-section">
+          <button className="tour-dates-btn" onClick={handleTourClick}>
+            TOUR DATES
+          </button>
+          {showTourMessage && (
+            <div className="tour-message">
+              <span className="tour-message-text">TOUR DATES TO BE ANNOUNCED</span>
+            </div>
+          )}
+        </div>
+
         <div className="social-links">
           <a
             href="https://discord.com/channels/1438270637700415570/1438270638509785213"
