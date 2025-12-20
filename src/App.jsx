@@ -14,6 +14,7 @@ function App() {
   const [isMobile, setIsMobile] = useState(false)
   const [currentTrack, setCurrentTrack] = useState(0)
   const [showTourMessage, setShowTourMessage] = useState(false)
+  const [showReleases, setShowReleases] = useState(false)
 
   const playlist = [
     '/The Gate (feat. Lil Coop).mp3',
@@ -164,7 +165,7 @@ function App() {
 
   return (
     <div
-      className={`app-container ${glitchActive ? 'glitch-active' : ''} ${lightning ? 'lightning-flash' : ''} ${activeEffect ? `effect-${activeEffect}` : ''}`}
+      className={`app-container ${showReleases ? 'releases-page' : ''} ${glitchActive ? 'glitch-active' : ''} ${lightning ? 'lightning-flash' : ''} ${activeEffect ? `effect-${activeEffect}` : ''}`}
       onClick={handleFirstInteraction}
       onScroll={handleFirstInteraction}
     >
@@ -211,6 +212,9 @@ function App() {
         <button className="nav-link nav-btn" onClick={handleTourClick} title="Tour Dates">
           <span className="nav-text">TOUR</span>
         </button>
+        <button className="nav-link nav-btn" onClick={() => setShowReleases(!showReleases)} title="Releases">
+          <span className="nav-text">{showReleases ? 'HOME' : 'RELEASES'}</span>
+        </button>
       </nav>
 
       {/* Tour Message Overlay */}
@@ -222,7 +226,35 @@ function App() {
         </div>
       )}
 
-      {/* Stars effect */}
+      {/* Egyptian Hieroglyphics Matrix Background - Always visible */}
+      <div className="hieroglyphics-matrix">
+        {[...Array(isMobile ? 15 : 30)].map((_, i) => {
+          const randomStart = Math.random() * 100;
+          return (
+            <div
+              key={i}
+              className="hieroglyph-column"
+              style={{
+                left: `${(i / (isMobile ? 15 : 30)) * 100}%`,
+                top: `-${100 - randomStart}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${12 + Math.random() * 8}s`
+              }}
+            >
+              {String.fromCharCode(0x13000 + Math.floor(Math.random() * 1000))}
+              {String.fromCharCode(0x13000 + Math.floor(Math.random() * 1000))}
+              {String.fromCharCode(0x13000 + Math.floor(Math.random() * 1000))}
+              {String.fromCharCode(0x13000 + Math.floor(Math.random() * 1000))}
+              {String.fromCharCode(0x13000 + Math.floor(Math.random() * 1000))}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Conditional Page Content */}
+      {!showReleases ? (
+        <>
+          {/* Stars effect */}
       <div className="stars" style={{
         transform: `scale(${1 + scrollY * 0.0003})`,
         filter: `blur(${Math.min(scrollY * 0.002, 2)}px)`
@@ -538,6 +570,47 @@ function App() {
           <span className="chrome-text">BUILT IN THE PAST</span>
         </div>
       </footer>
+        </>
+      ) : (
+        /* Releases Page */
+        <div className="releases-page-content">
+          {/* Releases Content */}
+          <section className="releases-content-section">
+            <h2 className="section-title">// RELEASES_</h2>
+
+            <div className="releases-grid">
+              {/* 90s Mentality Vinyl */}
+              <div className="release-card">
+                <a
+                  href="https://neweranell.bandcamp.com/album/90s-mentality"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="release-link"
+                >
+                  <div className="release-card-wrapper">
+                    <img src="/90s vinyl.jpg" alt="90s Mentality" className="release-img" loading="eager" />
+                    <div className="release-overlay">
+                      <h3 className="release-title">90s MENTALITY</h3>
+                      <p className="release-format">VINYL / DIGITAL</p>
+                      <p className="release-year">2024</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              {/* Placeholder for more releases */}
+              <div className="release-card coming-soon">
+                <div className="release-card-wrapper">
+                  <div className="coming-soon-content">
+                    <span className="coming-soon-text">MORE RELEASES</span>
+                    <span className="coming-soon-subtext">COMING SOON</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      )}
     </div>
   )
 }

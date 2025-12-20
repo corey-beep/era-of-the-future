@@ -1938,6 +1938,253 @@ html {
 }
 
 /* ============================================
+   RELEASES PAGE
+   ============================================ */
+
+.releases-page::before {
+  background: #000000 !important;
+  opacity: 1 !important;
+  animation: none !important;
+}
+
+.releases-page-content {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding: 120px 20px 80px;
+  z-index: 2;
+}
+
+/* Egyptian Hieroglyphics Matrix Background */
+.hieroglyphics-matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hieroglyph-column {
+  position: absolute;
+  top: -100%;
+  font-size: 2rem;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  animation: hieroglyph-fall linear infinite;
+  animation-play-state: running;
+  opacity: 0.8;
+  font-family: 'Noto Sans Egyptian Hieroglyphs', sans-serif;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.5em;
+  filter: blur(0.5px);
+  will-change: transform;
+}
+
+@keyframes hieroglyph-fall {
+  0% {
+    top: -100%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Releases Content Section */
+.releases-content-section {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.releases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 40px;
+  padding: 40px 20px;
+  margin-top: 40px;
+}
+
+/* Release Card */
+.release-card {
+  position: relative;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.release-link {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.release-card-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 4px solid #FFD700;
+  box-shadow:
+    8px 8px 0px rgba(255, 215, 0, 0.3),
+    inset 0 0 30px rgba(0, 0, 0, 0.5);
+  clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #000000;
+}
+
+.release-card:hover .release-card-wrapper {
+  transform: scale(1.03) rotate(-1deg);
+  box-shadow:
+    12px 12px 0px rgba(255, 215, 0, 0.5),
+    inset 0 0 40px rgba(0, 0, 0, 0.7);
+  border-color: #ffffff;
+}
+
+.release-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: all 0.3s ease;
+  filter: contrast(1.2) brightness(0.95);
+}
+
+.release-card:hover .release-img {
+  filter: contrast(1.4) brightness(1.1);
+  transform: scale(1.05);
+}
+
+.release-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.8) 60%,
+    transparent 100%
+  );
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.release-card:hover .release-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.9) 60%,
+    transparent 100%
+  );
+  padding: 40px 20px;
+}
+
+.release-title {
+  font-family: 'Black Ops One', cursive;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  color: #FFD700;
+  text-shadow:
+    2px 2px 0px #000000,
+    0 0 20px rgba(255, 215, 0, 0.5);
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-align: center;
+}
+
+.release-format,
+.release-year {
+  font-family: 'Black Ops One', monospace;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.15em;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.release-card:hover .release-format,
+.release-card:hover .release-year {
+  opacity: 1;
+  color: #FFD700;
+}
+
+/* Coming Soon Card */
+.release-card.coming-soon .release-card-wrapper {
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #1a1a1a 50%,
+    #0a0a0a 100%
+  );
+  border: 4px solid #606060;
+  box-shadow:
+    8px 8px 0px rgba(96, 96, 96, 0.3),
+    inset 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.release-card.coming-soon:hover .release-card-wrapper {
+  border-color: #c0c0c0;
+  box-shadow:
+    12px 12px 0px rgba(192, 192, 192, 0.4),
+    inset 0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+.coming-soon-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 20px;
+}
+
+.coming-soon-text {
+  font-family: 'Black Ops One', cursive;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  color: #c0c0c0;
+  text-shadow: 2px 2px 0px #000000;
+  letter-spacing: 0.1em;
+  text-align: center;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.coming-soon-subtext {
+  font-family: 'Black Ops One', monospace;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: #808080;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+.release-card.coming-soon:hover .coming-soon-text {
+  color: #ffffff;
+  text-shadow:
+    2px 2px 0px #000000,
+    0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.release-card.coming-soon:hover .coming-soon-subtext {
+  color: #c0c0c0;
+}
+
+/* ============================================
    SELECTION & CURSOR
    ============================================ */
 
