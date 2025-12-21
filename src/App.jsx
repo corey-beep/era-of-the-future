@@ -647,7 +647,7 @@ function App() {
         </div>
       </footer>
         </>
-      ) : (
+      ) : showReleases ? (
         /* Releases Page */
         <div className="releases-page-content">
           {/* Releases Content */}
