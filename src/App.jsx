@@ -359,7 +359,7 @@ function App() {
               className="vinyl-album-link"
             >
               <div className="vinyl-album-wrapper">
-                <img src="/blavk.jpg" alt="The Black Tape" className="vinyl-album-img" loading="eager" />
+                <img src="/blavk.JPG" alt="The Black Tape" className="vinyl-album-img" loading="eager" />
                 <div className="vinyl-album-overlay">
                   <span className="vinyl-cta">GET THE BLACK TAPE VINYL NOW!</span>
                   <span className="vinyl-subcta">CLICK TO BUY ON BANDCAMP</span>
@@ -688,7 +688,7 @@ function App() {
                   className="release-link"
                 >
                   <div className="release-card-wrapper">
-                    <img src="/blavk.jpg" alt="The Black Tape" className="release-img" loading="eager" />
+                    <img src="/blavk.JPG" alt="The Black Tape" className="release-img" loading="eager" />
                     <div className="release-overlay">
                       <h3 className="release-title">THE BLACK TAPE</h3>
                       <p className="release-format">VINYL / DIGITAL</p>
