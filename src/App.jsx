@@ -16,6 +16,7 @@ function App() {
   const [currentTrack, setCurrentTrack] = useState(0)
   const [showTourMessage, setShowTourMessage] = useState(false)
   const [showReleases, setShowReleases] = useState(false)
+  const [showMerch, setShowMerch] = useState(false)
 
   const playlist = [
     '/The Gate (feat. Lil Coop).mp3',
@@ -164,9 +165,38 @@ function App() {
     }
   }
 
+  // Handle merch flip buttons
+  useEffect(() => {
+    const flipButtons = document.querySelectorAll('.flip-btn')
+
+    flipButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const card = e.target.closest('.merch-card')
+        const frontImg = card.querySelector('.front-img')
+        const backImg = card.querySelector('.back-img')
+
+        if (frontImg.classList.contains('active')) {
+          frontImg.classList.remove('active')
+          backImg.classList.add('active')
+          e.target.textContent = 'VIEW FRONT'
+        } else {
+          backImg.classList.remove('active')
+          frontImg.classList.add('active')
+          e.target.textContent = 'VIEW BACK'
+        }
+      })
+    })
+
+    return () => {
+      flipButtons.forEach(button => {
+        button.replaceWith(button.cloneNode(true))
+      })
+    }
+  }, [showMerch])
+
   return (
     <div
-      className={`app-container ${showReleases ? 'releases-page' : ''} ${glitchActive ? 'glitch-active' : ''} ${lightning ? 'lightning-flash' : ''} ${activeEffect ? `effect-${activeEffect}` : ''}`}
+      className={`app-container ${showReleases || showMerch ? 'releases-page' : ''} ${glitchActive ? 'glitch-active' : ''} ${lightning ? 'lightning-flash' : ''} ${activeEffect ? `effect-${activeEffect}` : ''}`}
       onClick={handleFirstInteraction}
       onScroll={handleFirstInteraction}
     >
@@ -213,8 +243,11 @@ function App() {
         <button className="nav-link nav-btn" onClick={handleTourClick} title="Tour Dates">
           <span className="nav-text">TOUR</span>
         </button>
-        <button className="nav-link nav-btn" onClick={() => setShowReleases(!showReleases)} title="Releases">
+        <button className="nav-link nav-btn" onClick={() => { setShowReleases(!showReleases); setShowMerch(false); }} title="Releases">
           <span className="nav-text">{showReleases ? 'HOME' : 'RELEASES'}</span>
+        </button>
+        <button className="nav-link nav-btn" onClick={() => { setShowMerch(!showMerch); setShowReleases(false); }} title="Merch">
+          <span className="nav-text">{showMerch ? 'HOME' : 'MERCH'}</span>
         </button>
       </nav>
 
@@ -253,7 +286,7 @@ function App() {
       </div>
 
       {/* Conditional Page Content */}
-      {!showReleases ? (
+      {!showReleases && !showMerch ? (
         <>
           {/* Stars effect */}
       <div className="stars" style={{
@@ -710,7 +743,132 @@ function App() {
             </div>
           </section>
         </div>
-      )}
+      ) : showMerch ? (
+        /* Merch Page */
+        <div className="releases-page-content">
+          {/* Merch Content */}
+          <section className="releases-content-section">
+            <h2 className="section-title">// MERCH_</h2>
+
+            <div className="merch-grid">
+              {/* Ra (Gray Area) */}
+              <div className="merch-card">
+                <div className="merch-card-wrapper">
+                  <div className="merch-images">
+                    <img src="/merch/ra gray area (front).png" alt="Ra Gray Area Front" className="merch-img front-img active" />
+                    <img src="/merch/ra gray area (back).png" alt="Ra Gray Area Back" className="merch-img back-img" />
+                  </div>
+                  <div className="merch-overlay">
+                    <h3 className="merch-title">RA (GRAY AREA)</h3>
+                    <p className="merch-price">$30.00 USD</p>
+                    <a
+                      href="https://buy.stripe.com/8x2aEY0zqf5mgOlgU133W00"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="merch-buy-btn"
+                    >
+                      BUY NOW
+                    </a>
+                    <button className="flip-btn">VIEW BACK</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Sun God */}
+              <div className="merch-card">
+                <div className="merch-card-wrapper">
+                  <div className="merch-images">
+                    <img src="/merch/sun god (front).png" alt="Sun God Front" className="merch-img front-img active" />
+                    <img src="/merch/sun god (back).png" alt="Sun God Back" className="merch-img back-img" />
+                  </div>
+                  <div className="merch-overlay">
+                    <h3 className="merch-title">SUN GOD</h3>
+                    <p className="merch-price">$30.00 USD</p>
+                    <a
+                      href="https://buy.stripe.com/00w8wQ0zq2iA0PngU133W01"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="merch-buy-btn"
+                    >
+                      BUY NOW
+                    </a>
+                    <button className="flip-btn">VIEW BACK</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Ra (Blackout) */}
+              <div className="merch-card">
+                <div className="merch-card-wrapper">
+                  <div className="merch-images">
+                    <img src="/merch/ra (blackout front).png" alt="Ra Blackout Front" className="merch-img front-img active" />
+                    <img src="/merch/ra (blackout back).png" alt="Ra Blackout Back" className="merch-img back-img" />
+                  </div>
+                  <div className="merch-overlay">
+                    <h3 className="merch-title">RA (BLACKOUT)</h3>
+                    <p className="merch-price">$30.00 USD</p>
+                    <a
+                      href="https://buy.stripe.com/aFa9AU81S8GYdC9fPX33W02"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="merch-buy-btn"
+                    >
+                      BUY NOW
+                    </a>
+                    <button className="flip-btn">VIEW BACK</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Ra */}
+              <div className="merch-card">
+                <div className="merch-card-wrapper">
+                  <div className="merch-images">
+                    <img src="/merch/ra (front).png" alt="Ra Front" className="merch-img front-img active" />
+                    <img src="/merch/ra (back).png" alt="Ra Back" className="merch-img back-img" />
+                  </div>
+                  <div className="merch-overlay">
+                    <h3 className="merch-title">RA</h3>
+                    <p className="merch-price">$30.00 USD</p>
+                    <a
+                      href="https://buy.stripe.com/7sYbJ24PGbTagOlbzH33W03"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="merch-buy-btn"
+                    >
+                      BUY NOW
+                    </a>
+                    <button className="flip-btn">VIEW BACK</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Soulja Screw */}
+              <div className="merch-card">
+                <div className="merch-card-wrapper">
+                  <div className="merch-images">
+                    <img src="/merch/soulja screw (front).png" alt="Soulja Screw Front" className="merch-img front-img active" />
+                    <img src="/merch/soulja screw (back).png" alt="Soulja Screw Back" className="merch-img back-img" />
+                  </div>
+                  <div className="merch-overlay">
+                    <h3 className="merch-title">SOULJA SCREW</h3>
+                    <p className="merch-price">$30.00 USD</p>
+                    <a
+                      href="https://buy.stripe.com/aFadRagyo0ascy5bzH33W04"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="merch-buy-btn"
+                    >
+                      BUY NOW
+                    </a>
+                    <button className="flip-btn">VIEW BACK</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      ) : null}
       <Analytics />
     </div>
   )
