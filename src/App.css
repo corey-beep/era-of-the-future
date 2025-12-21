@@ -1141,13 +1141,17 @@ html {
   justify-content: center;
   align-items: center;
   padding: 20px;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
 .vinyl-album-link {
   text-decoration: none;
   display: block;
-  max-width: 600px;
+  max-width: 500px;
   width: 100%;
+  flex: 1;
+  min-width: 300px;
 }
 
 .vinyl-album-wrapper {

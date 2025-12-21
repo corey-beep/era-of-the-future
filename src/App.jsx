@@ -309,7 +309,7 @@ function App() {
         {/* Vinyl Album Section */}
         <div className="vinyl-hero-section">
           <h2 className="vinyl-section-title">// GET_VINYL_</h2>
-          <div className="vinyl-album-container">
+          <div className="vinyl-album-container dual-albums">
             <a
               href="https://neweranell.bandcamp.com/album/90s-mentality"
               target="_blank"
@@ -320,6 +320,20 @@ function App() {
                 <img src="/90s vinyl.jpg" alt="90s Mentality Vinyl" className="vinyl-album-img" loading="eager" />
                 <div className="vinyl-album-overlay">
                   <span className="vinyl-cta">GET 90s MENTALITY VINYL NOW!</span>
+                  <span className="vinyl-subcta">CLICK TO BUY ON BANDCAMP</span>
+                </div>
+              </div>
+            </a>
+            <a
+              href="https://neweranell.bandcamp.com/album/the-screw-tape"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="vinyl-album-link"
+            >
+              <div className="vinyl-album-wrapper">
+                <img src="/screw.png" alt="The Screw Tape" className="vinyl-album-img" loading="eager" />
+                <div className="vinyl-album-overlay">
+                  <span className="vinyl-cta">GET THE SCREW TAPE NOW!</span>
                   <span className="vinyl-subcta">CLICK TO BUY ON BANDCAMP</span>
                 </div>
               </div>
