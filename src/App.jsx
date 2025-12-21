@@ -599,6 +599,25 @@ function App() {
                 </a>
               </div>
 
+              {/* The Screw Tape */}
+              <div className="release-card">
+                <a
+                  href="https://neweranell.bandcamp.com/album/the-screw-tape"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="release-link"
+                >
+                  <div className="release-card-wrapper">
+                    <img src="/screw.png" alt="The Screw Tape" className="release-img" loading="eager" />
+                    <div className="release-overlay">
+                      <h3 className="release-title">THE SCREW TAPE</h3>
+                      <p className="release-format">DIGITAL</p>
+                      <p className="release-year">2024</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
               {/* Placeholder for more releases */}
               <div className="release-card coming-soon">
                 <div className="release-card-wrapper">
