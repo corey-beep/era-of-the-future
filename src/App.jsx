@@ -338,6 +338,20 @@ function App() {
                 </div>
               </div>
             </a>
+            <a
+              href="https://neweranell.bandcamp.com/album/boyz-n-the-hood"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="vinyl-album-link"
+            >
+              <div className="vinyl-album-wrapper">
+                <img src="/boyz.png" alt="Boyz N The Hood" className="vinyl-album-img" loading="eager" />
+                <div className="vinyl-album-overlay">
+                  <span className="vinyl-cta">GET BOYZ N THE HOOD VINYL NOW!</span>
+                  <span className="vinyl-subcta">CLICK TO BUY ON BANDCAMP</span>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </section>
@@ -625,6 +639,25 @@ function App() {
                     <img src="/screw.png" alt="The Screw Tape" className="release-img" loading="eager" />
                     <div className="release-overlay">
                       <h3 className="release-title">THE SCREW TAPE</h3>
+                      <p className="release-format">VINYL / DIGITAL</p>
+                      <p className="release-year">2024</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              {/* Boyz N The Hood */}
+              <div className="release-card">
+                <a
+                  href="https://neweranell.bandcamp.com/album/boyz-n-the-hood"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="release-link"
+                >
+                  <div className="release-card-wrapper">
+                    <img src="/boyz.png" alt="Boyz N The Hood" className="release-img" loading="eager" />
+                    <div className="release-overlay">
+                      <h3 className="release-title">BOYZ N THE HOOD</h3>
                       <p className="release-format">VINYL / DIGITAL</p>
                       <p className="release-year">2024</p>
                     </div>
