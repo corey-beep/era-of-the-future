@@ -333,7 +333,7 @@ function App() {
               <div className="vinyl-album-wrapper">
                 <img src="/screw.png" alt="The Screw Tape" className="vinyl-album-img" loading="eager" />
                 <div className="vinyl-album-overlay">
-                  <span className="vinyl-cta">GET THE SCREW TAPE NOW!</span>
+                  <span className="vinyl-cta">GET THE SCREW TAPE VINYL NOW!</span>
                   <span className="vinyl-subcta">CLICK TO BUY ON BANDCAMP</span>
                 </div>
               </div>
@@ -625,7 +625,7 @@ function App() {
                     <img src="/screw.png" alt="The Screw Tape" className="release-img" loading="eager" />
                     <div className="release-overlay">
                       <h3 className="release-title">THE SCREW TAPE</h3>
-                      <p className="release-format">DIGITAL</p>
+                      <p className="release-format">VINYL / DIGITAL</p>
                       <p className="release-year">2024</p>
                     </div>
                   </div>
