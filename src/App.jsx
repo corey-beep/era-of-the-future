@@ -767,7 +767,7 @@ function App() {
                       rel="noopener noreferrer"
                       className="merch-buy-btn"
                     >
-                      BUY NOW
+                      PRE ORDER NOW
                     </a>
                     <button className="flip-btn">VIEW BACK</button>
                   </div>
@@ -790,7 +790,7 @@ function App() {
                       rel="noopener noreferrer"
                       className="merch-buy-btn"
                     >
-                      BUY NOW
+                      PRE ORDER NOW
                     </a>
                     <button className="flip-btn">VIEW BACK</button>
                   </div>
@@ -813,7 +813,7 @@ function App() {
                       rel="noopener noreferrer"
                       className="merch-buy-btn"
                     >
-                      BUY NOW
+                      PRE ORDER NOW
                     </a>
                     <button className="flip-btn">VIEW BACK</button>
                   </div>
@@ -836,7 +836,7 @@ function App() {
                       rel="noopener noreferrer"
                       className="merch-buy-btn"
                     >
-                      BUY NOW
+                      PRE ORDER NOW
                     </a>
                     <button className="flip-btn">VIEW BACK</button>
                   </div>
@@ -859,7 +859,7 @@ function App() {
                       rel="noopener noreferrer"
                       className="merch-buy-btn"
                     >
-                      BUY NOW
+                      PRE ORDER NOW
                     </a>
                     <button className="flip-btn">VIEW BACK</button>
                   </div>
