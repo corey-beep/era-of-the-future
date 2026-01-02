@@ -641,6 +641,24 @@ function App() {
                 </a>
               </div>
 
+              {/* 90s Mentality Merch */}
+              <div className="release-card merch-card">
+                <a
+                  href="https://neweranell.bandcamp.com/album/90s-mentality"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="release-link"
+                >
+                  <div className="release-card-wrapper">
+                    <img src="/merch/90s-mentality-black-front.png" alt="90s Mentality Merch" className="release-img merch-img" loading="lazy" />
+                    <div className="release-overlay">
+                      <h3 className="release-title merch-title">MERCH</h3>
+                      <p className="release-format">SHIRT</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
               {/* The Screw Tape */}
               <div className="release-card">
                 <a
@@ -660,6 +678,24 @@ function App() {
                 </a>
               </div>
 
+              {/* The Screw Tape Merch */}
+              <div className="release-card merch-card">
+                <a
+                  href="https://neweranell.bandcamp.com/album/the-screw-tape"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="release-link"
+                >
+                  <div className="release-card-wrapper">
+                    <img src="/merch/screw-tape-black.png" alt="The Screw Tape Merch" className="release-img merch-img" loading="lazy" />
+                    <div className="release-overlay">
+                      <h3 className="release-title merch-title">MERCH</h3>
+                      <p className="release-format">SHIRT</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
               {/* Boyz N The Hood */}
               <div className="release-card">
                 <a
@@ -674,6 +710,24 @@ function App() {
                       <h3 className="release-title">BOYZ N THE HOOD</h3>
                       <p className="release-format">VINYL / DIGITAL</p>
                       <p className="release-year">2024</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              {/* Boyz N The Hood Merch */}
+              <div className="release-card merch-card">
+                <a
+                  href="https://neweranell.bandcamp.com/album/boyz-n-the-hood"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="release-link"
+                >
+                  <div className="release-card-wrapper">
+                    <img src="/merch/boyz-in-the-hood-black.png" alt="Boyz N The Hood Merch" className="release-img merch-img" loading="lazy" />
+                    <div className="release-overlay">
+                      <h3 className="release-title merch-title">MERCH</h3>
+                      <p className="release-format">SHIRT</p>
                     </div>
                   </div>
                 </a>
