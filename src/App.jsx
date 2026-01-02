@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
+import Releases from './Releases.jsx'
 import './App.css'
 
 function App() {
@@ -15,7 +17,6 @@ function App() {
   const [isMobile, setIsMobile] = useState(false)
   const [currentTrack, setCurrentTrack] = useState(0)
   const [showTourMessage, setShowTourMessage] = useState(false)
-  const [showReleases, setShowReleases] = useState(false)
 
   const playlist = [
     '/The Gate (feat. Lil Coop).mp3',
@@ -166,7 +167,7 @@ function App() {
 
   return (
     <div
-      className={`app-container ${showReleases ? 'releases-page' : ''} ${glitchActive ? 'glitch-active' : ''} ${lightning ? 'lightning-flash' : ''} ${activeEffect ? `effect-${activeEffect}` : ''}`}
+      className={`app-container ${glitchActive ? 'glitch-active' : ''} ${lightning ? 'lightning-flash' : ''} ${activeEffect ? `effect-${activeEffect}` : ''}`}
       onClick={handleFirstInteraction}
       onScroll={handleFirstInteraction}
     >
@@ -213,9 +214,9 @@ function App() {
         <button className="nav-link nav-btn" onClick={handleTourClick} title="Tour Dates">
           <span className="nav-text">TOUR</span>
         </button>
-        <button className="nav-link nav-btn" onClick={() => setShowReleases(!showReleases)} title="Releases">
-          <span className="nav-text">{showReleases ? 'HOME' : 'RELEASES'}</span>
-        </button>
+        <Link to="/releases" className="nav-link nav-btn" title="Releases">
+          <span className="nav-text">RELEASES</span>
+        </Link>
       </nav>
 
       {/* Tour Message Overlay */}
@@ -252,9 +253,10 @@ function App() {
         })}
       </div>
 
-      {/* Conditional Page Content */}
-      {!showReleases ? (
-        <>
+      {/* Page Content */}
+      <Routes>
+        <Route path="/" element={
+          <>
           {/* Stars effect */}
       <div className="stars" style={{
         transform: `scale(${1 + scrollY * 0.0003})`,
@@ -613,173 +615,10 @@ function App() {
           <span className="chrome-text">BUILT IN THE PAST</span>
         </div>
       </footer>
-        </>
-      ) : showReleases ? (
-        /* Releases Page */
-        <div className="releases-page-content">
-          {/* Releases Content */}
-          <section className="releases-content-section">
-            <h2 className="section-title">// RELEASES_</h2>
-
-            {/* 90s Mentality Section */}
-            <div className="release-section">
-              <h3 className="release-section-title">90s MENTALITY</h3>
-              <div className="release-pair-grid">
-                <div className="release-card">
-                  <a
-                    href="https://neweranell.bandcamp.com/album/90s-mentality"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="release-link"
-                  >
-                    <div className="release-card-wrapper">
-                      <img src="/90s vinyl.jpg" alt="90s Mentality" className="release-img" loading="eager" />
-                      <div className="release-overlay">
-                        <h3 className="release-title">VINYL / DIGITAL</h3>
-                        <p className="release-year">2024</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-
-                <div className="release-card merch-card">
-                  <a
-                    href="https://neweranell.bandcamp.com/album/90s-mentality"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="release-link"
-                  >
-                    <div className="release-card-wrapper">
-                      <img src="/merch/90s-mentality-black-front.png" alt="90s Mentality Merch" className="release-img merch-img" loading="lazy" />
-                      <div className="release-overlay">
-                        <h3 className="release-title merch-title">MERCH</h3>
-                        <p className="release-format">SHIRT</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* The Screw Tape Section */}
-            <div className="release-section">
-              <h3 className="release-section-title">THE SCREW TAPE</h3>
-              <div className="release-pair-grid">
-                <div className="release-card">
-                  <a
-                    href="https://neweranell.bandcamp.com/album/the-screw-tape"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="release-link"
-                  >
-                    <div className="release-card-wrapper">
-                      <img src="/screw.png" alt="The Screw Tape" className="release-img" loading="eager" />
-                      <div className="release-overlay">
-                        <h3 className="release-title">VINYL / DIGITAL</h3>
-                        <p className="release-year">2024</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-
-                <div className="release-card merch-card">
-                  <a
-                    href="https://neweranell.bandcamp.com/album/the-screw-tape"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="release-link"
-                  >
-                    <div className="release-card-wrapper">
-                      <img src="/merch/screw-tape-black.png" alt="The Screw Tape Merch" className="release-img merch-img" loading="lazy" />
-                      <div className="release-overlay">
-                        <h3 className="release-title merch-title">MERCH</h3>
-                        <p className="release-format">SHIRT</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Boyz N The Hood Section */}
-            <div className="release-section">
-              <h3 className="release-section-title">BOYZ N THE HOOD</h3>
-              <div className="release-pair-grid">
-                <div className="release-card">
-                  <a
-                    href="https://neweranell.bandcamp.com/album/boyz-n-the-hood"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="release-link"
-                  >
-                    <div className="release-card-wrapper">
-                      <img src="/boyz.png" alt="Boyz N The Hood" className="release-img" loading="eager" />
-                      <div className="release-overlay">
-                        <h3 className="release-title">VINYL / DIGITAL</h3>
-                        <p className="release-year">2024</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-
-                <div className="release-card merch-card">
-                  <a
-                    href="https://neweranell.bandcamp.com/album/boyz-n-the-hood"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="release-link"
-                  >
-                    <div className="release-card-wrapper">
-                      <img src="/merch/boyz-in-the-hood-black.png" alt="Boyz N The Hood Merch" className="release-img merch-img" loading="lazy" />
-                      <div className="release-overlay">
-                        <h3 className="release-title merch-title">MERCH</h3>
-                        <p className="release-format">SHIRT</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* The Black Tape Section */}
-            <div className="release-section">
-              <h3 className="release-section-title">THE BLACK TAPE</h3>
-              <div className="release-pair-grid">
-                <div className="release-card">
-                  <a
-                    href="https://neweranell.bandcamp.com/album/the-black-tape"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="release-link"
-                  >
-                    <div className="release-card-wrapper">
-                      <img src="/blavk.JPG" alt="The Black Tape" className="release-img" loading="eager" />
-                      <div className="release-overlay">
-                        <h3 className="release-title">VINYL / DIGITAL</h3>
-                        <p className="release-year">2024</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Coming Soon Section */}
-            <div className="release-section">
-              <h3 className="release-section-title">MORE RELEASES</h3>
-              <div className="release-pair-grid">
-                <div className="release-card coming-soon">
-                  <div className="release-card-wrapper">
-                    <div className="coming-soon-content">
-                      <span className="coming-soon-text">COMING SOON</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      ) : null}
+          </>
+        } />
+        <Route path="/releases" element={<Releases />} />
+      </Routes>
       <Analytics />
     </div>
   )
